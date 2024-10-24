@@ -1,11 +1,19 @@
 server:
-  port: 8092
+  port: 8080
   tomcat:
     max-connections: 20
     threads:
       max: 20
       min-spare: 10
     accept-count: 10
+#微信的配置
+weixin:
+  config:
+    #微信用户id，公众号持有的用户
+    originalid: gh_31451429fa36
+    #共同约定receive方法的token
+    token: b8b0
+#日志配置，固定写法
 logging:
   level:
     root: info
