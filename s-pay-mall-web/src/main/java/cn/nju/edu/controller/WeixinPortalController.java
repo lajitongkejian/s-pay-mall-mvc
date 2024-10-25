@@ -68,10 +68,10 @@ public class WeixinPortalController {
             // 消息转换
             MessageTextEntity message = XmlUtil.xmlToBean(requestBody, MessageTextEntity.class);
 
-            if("event".equals(message.getMsgType()) && "SCAN".equals(message.getEvent())){
-                iLogInService.saveLogInState(message.getTicket(),openid);
-                return buildMessageTextEntity(openid,"登录成功");
-            }
+//            if("event".equals(message.getMsgType()) && "SCAN".equals(message.getEvent())){
+//                iLogInService.saveLogInState(message.getTicket(),openid);
+//                return buildMessageTextEntity(openid,"登录成功");
+//            }
 
             return buildMessageTextEntity(openid, "你好，" + message.getContent());
         } catch (Exception e) {
