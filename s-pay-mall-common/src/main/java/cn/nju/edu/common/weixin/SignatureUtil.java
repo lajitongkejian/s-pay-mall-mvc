@@ -1,4 +1,4 @@
-package cn.nju.edu.common;
+package cn.nju.edu.common.weixin;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

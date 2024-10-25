@@ -13,6 +13,11 @@ weixin:
     originalid: gh_31451429fa36
     #共同约定receive方法的token
     token: b8b0
+    app-id: wx17c5129804c2590c
+    app-secret: 6d244f0143aaf93fb72289d71cca5656
+    template-id: AIBKbI1bf3LnfM8Yov00Y8UxwBxlcmmapVRuVE62nmw
+    touser: oPwuY6ucrrwDGnYkD151fIvJV6hc
+
 #日志配置，固定写法
 logging:
   level:

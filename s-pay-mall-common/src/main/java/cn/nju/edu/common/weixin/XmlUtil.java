@@ -1,4 +1,4 @@
-package cn.nju.edu.common;
+package cn.nju.edu.common.weixin;
 
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.core.util.QuickWriter;
