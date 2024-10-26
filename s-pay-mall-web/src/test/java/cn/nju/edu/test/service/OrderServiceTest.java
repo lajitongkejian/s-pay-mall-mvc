@@ -4,6 +4,7 @@ import cn.nju.edu.domain.req.ShopCartReq;
 import cn.nju.edu.domain.res.PayOrderRes;
 import cn.nju.edu.service.IOrderService;
 import com.alibaba.fastjson2.JSON;
+import com.alipay.api.AlipayApiException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +29,7 @@ public class OrderServiceTest {
     private IOrderService orderService;
 
     @Test
-    public void test_createOrder(){
+    public void test_createOrder() throws AlipayApiException {
         ShopCartReq shopCartReq = new ShopCartReq();
         shopCartReq.setUserId("xiaofuge");
         shopCartReq.setProductId("10001");

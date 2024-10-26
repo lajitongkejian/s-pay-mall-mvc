@@ -12,6 +12,7 @@ import java.io.Serializable;
  * 类名称：Response
  * 作者：tkj
  * 日期：2024/10/25
+ * 用于Controller返回值，所以一般使用泛型，为了序列化所以要实现Serializable
  */
 @Data
 @AllArgsConstructor

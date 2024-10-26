@@ -2,6 +2,7 @@ package cn.nju.edu.service;
 
 import cn.nju.edu.domain.req.ShopCartReq;
 import cn.nju.edu.domain.res.PayOrderRes;
+import com.alipay.api.AlipayApiException;
 
 /**
  * 项目名称：s-pay-mall-mvc
@@ -11,5 +12,5 @@ import cn.nju.edu.domain.res.PayOrderRes;
  */
 public interface IOrderService {
 
-    PayOrderRes createOrder(ShopCartReq shopCartReq);
+    PayOrderRes createOrder(ShopCartReq shopCartReq) throws AlipayApiException;
 }
