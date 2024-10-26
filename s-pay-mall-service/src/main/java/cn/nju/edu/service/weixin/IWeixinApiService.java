@@ -1,6 +1,6 @@
 package cn.nju.edu.service.weixin;
 
-import cn.nju.edu.domain.po.WeixinTemplateMessageVO;
+import cn.nju.edu.domain.vo.WeixinTemplateMessageVO;
 import cn.nju.edu.domain.req.WeixinQrCodeReq;
 import cn.nju.edu.domain.res.WeixinQrCodeRes;
 import cn.nju.edu.domain.res.WeixinTokenRes;

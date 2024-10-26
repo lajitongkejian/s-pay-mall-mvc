@@ -1,6 +1,4 @@
-package cn.nju.edu.domain.po;
-
-import org.springframework.beans.factory.annotation.Value;
+package cn.nju.edu.domain.vo;
 
 import java.util.HashMap;
 import java.util.Map;

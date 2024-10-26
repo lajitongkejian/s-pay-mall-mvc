@@ -1,6 +1,6 @@
 package cn.nju.edu.service.impl;
 
-import cn.nju.edu.domain.po.WeixinTemplateMessageVO;
+import cn.nju.edu.domain.vo.WeixinTemplateMessageVO;
 import cn.nju.edu.domain.req.WeixinQrCodeReq;
 import cn.nju.edu.domain.res.WeixinQrCodeRes;
 import cn.nju.edu.domain.res.WeixinTokenRes;
@@ -11,8 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 import javax.annotation.Resource;
 import java.io.IOException;
