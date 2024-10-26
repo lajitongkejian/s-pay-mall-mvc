@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 
 @SpringBootApplication
 @Configurable
-//@MapperScan("cn.nju.edu.dao")
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class,args);
