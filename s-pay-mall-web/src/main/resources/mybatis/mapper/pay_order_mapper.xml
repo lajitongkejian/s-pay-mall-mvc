@@ -36,4 +36,28 @@
         update pay_order set pay_url = #{payUrl} , status = #{status} ,update_time = now()
         where order_id = #{orderId}
     </update>
+
+    <update id="changeOrderPaySuccess" parameterType="cn.nju.edu.domain.po.PayOrder">
+        update pay_order set status = #{status} ,update_time = now(), pay_time = now()
+        where order_id = #{orderId}
+    </update>
+    
+    <update id="changeOrderClose" parameterType="java.lang.String">
+        update pay_order set status = 'CLOSE' ,update_time = now(), pay_time = now()
+        where order_id = #{orderId}
+    </update>
+
+    <select id="queryTimeOutCloseOrderList" parameterType="java.lang.String" resultType="java.lang.String">
+        select order_id as orderId from pay_order
+        where status = 'PAY_WAIT' and now() >= order_time + INTERVAL 30 MINUTE
+        order by id asc
+        limit 50
+    </select>
+
+    <select id="queryNoPayNotifyOrderList" parameterType="java.lang.String" resultType="java.lang.String">
+        select order_id as orderId from pay_order
+        where status = 'PAY_WAIT' and now() >= order_time + INTERVAL 1 MINUTE
+        order by id asc
+        limit 10
+    </select>
 </mapper>

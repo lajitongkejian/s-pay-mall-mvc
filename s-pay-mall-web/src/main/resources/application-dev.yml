@@ -6,14 +6,60 @@ server:
       max: 20
       min-spare: 10
     accept-count: 10
+
+
 #微信的配置
 weixin:
   config:
-
-
+    #微信用户id，公众号持有的用户
+    originalid: gh_31451429fa36
+    #共同约定receive方法的token
+    token: b8b0
+    app-id: wx17c5129804c2590c
+    app-secret: 6d244f0143aaf93fb72289d71cca5656
+    template-id: AIBKbI1bf3LnfM8Yov00Y8UxwBxlcmmapVRuVE62nmw
 
 #日志配置，固定写法
 logging:
   level:
     root: info
   config: classpath:logback-spring.xml
+
+spring:
+  datasource:
+    username: root
+    password: tkj/*+010319
+    url: jdbc:mysql://113.44.59.3:13306/s-pay-mall?useUnicode=true&characterEncoding=utf8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&serverTimezone=Asia/Shanghai&useSSL=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    validationQuery: SELECT 1
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxPoolPreparedStatementPerConnectionSize: 20
+    filters: stat
+
+mybatis:
+  mapper-locations: classpath:/mybatis/mapper/*.xml
+  config-location:  classpath:/mybatis/config/mybatis-config.xml
+
+alipay:
+  enabled: true
+#  // 「沙箱环境」应用ID - 您的APPID，收款账号既是你的APPID对应支付宝账号。获取地址；https://open.alipay.com/develop/sandbox/app
+  app_id: 9021000141649034
+#    // 「沙箱环境」商户私钥，你的PKCS8格式RSA2私钥 -【秘钥工具】所创建的公户私钥
+  merchant_private_key: MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCTUCYn2TeZTbrWRQ3GrmSGhK1TBFQGrTI881xYJhdAFl3rN3xqIQCH6SwB7tGdDx+IRC6bFLE2i3In7xlfFVB4G2rNA43rxOKW4GNtaciG1S5IwGzYCTYtpkpQ6FKIEA02NQJmPmh9tJ8X5FyXRyr89HcJelQVV0jBiXRrE/T0/v6XCpBZRVmZHFExbsIFpK6XpBP2K4xWori19M8+U1qc1ewggr8Id8SniBwLpLIrq+tKcv9Enzxr8z/oB55AOXWFqutFXlGVa79oIAMLpFB7zpEs54Ly3ctGmnBIf1Z7kTF3tBKhUemEYGUKs2c+Wp531FfyiGUGufLGS1UzqL3LAgMBAAECggEAGTBNNecYcKgv2E96aYyMN8wb7uQAkhuvSWi7U38/3n90k7GrHmKCOrsOAU6anOZnF9/AsFe7bX4uiNGDXxS/66mUe3WuILBLpky784tw9E0jWuE8Ozxn/So/7tGquwUznR83R9BIAaaOxYEQq/VJTnNmn0JBelywXhdoxp5k9jcYoHT+Ijo/v9p3AaBgiTQpGCxir+qf+bfNH1XBBYPd9sGuwxfNaZQpFcVaign5FrxDS+Ws7tCSxQDJ1ugn+JTbhBEC027EXSZJsE5xqAYIH7/xrET4g35+sTjICOX3KFbv8STorEty8HTH99Jnyq3cpekDLKNBZMmb3DjChY0IwQKBgQDhQUk5L54PR765FCLkTvkphPioU9fc9O8A8KCxI8oWIFIyKJu7+g3ySa6OcBiZfd/mTs81S8Mrfrs6tpYRN2VocVly/q4LDMUHQxWqDGuwpGnHWE9sRS1XD0TWzYXZjoxvJNlb887614lddpO+p5OK8cQnYbhzYc4vuBKyphrnWwKBgQCna3dyUf0kWOZHSX4TUTkDq/iGcnWuRvqEkoBiA/H0bHCX6WfkLyMUKVeasFMMvNf9Ta0unZUqP5uPIzvvzItm7hwJvgom6xkPz1LET8eJ6k7Hcx9+y4BuAkE9JgmGGj/UXogQnQ9yLC8QbbxWdakSzEAjpLkk3IxYyPD581C+UQKBgQDfHf68kSj7s7H7uzFQedUdRiPS/7F6oHY4tSBGNdAPGJayLj0L9gRocIlhdzE2oFLt2jQuc0vvwkkMQBznErr0uAnE+PVF5rEmn1FPLZxhzIkmNpf9A4yEhpBGQC8LrsH1uUc/aIElP+dFV5XCrFRdtVn5NDcyurcz1x1WLWfKrwKBgCH17L7l3sG2vs+LGuX0Pep+weUT5sc5Yqvtw9keD8CTFqvaDtb8sNLwJ/Ma/V3CGNYrIYwpLw7o5Dc+4HOePFDe0BUx1YFbgzPvzExCGqnhO6W9to/T2/N0xaMPyjLHtFbx7gvgsDdquwlMGT44k9laUVBpo5zUmCuSZz9smd5hAoGAIg8uy4K7KM+KPylxZEhb4PX5J7rdt86bV6HBUrM6ZEHyXn4CBldIEQW6UTPy9GpHlZ40Npy0suU6hj+PJTXuqCpa4hpGUKSuPrWP8bmYNc60uhSuEcTJLnEbRuwnMr+bbVa4tLOAzZAKXmNNkTcm2BnrGKci2YhDlW9i0JAHDU8=
+#    // 「沙箱环境」支付宝公钥 -【秘钥填写】后提供给你的支付宝公钥
+  alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlrJqsGWPoBhIvyhcuro0lGVf1z+kFfmKyMUO6LoiYPd9eUH5pjhC6gI6rzpHfpUAm8LurLqF2D3gVTYzV9ucYr/Oa0v0Wk7QzEDwmdHghcPo7iyE2L/aK/hzWWdogJFdxM9hi7okSTUZHCh2JiFUxk4AfdYSqry06CmMJ9lD05PqafaNBGKBIJLgPfpGPAQdzpUcZkOXT/zUEiwbq4d7krf9kDmIWTel2t0b9ytjhyBUtxapndeqMj0ZOQAwh+1iABs8ch/hj/s5T3p7UfloojHLc8D0zm/ALD3i1803XqQ+mcWN2VccK2Fc8DXy3Nkyqjjo0eGU1IeU9Co87H3n5QIDAQAB
+#    // 「沙箱环境」服务器异步通知回调地址
+  notify_url: http://xfg-studio.natapp1.cc/api/v1/alipay/alipay_notify_url
+#    // 「沙箱环境」页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
+  return_url: https://gaga.plus
+#    // 「沙箱环境」
+  gatewayUrl: https://openapi-sandbox.dl.alipaydev.com/gateway.do
+

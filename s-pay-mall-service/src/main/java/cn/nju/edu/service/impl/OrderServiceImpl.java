@@ -8,10 +8,12 @@ import cn.nju.edu.domain.res.PayOrderRes;
 import cn.nju.edu.domain.vo.ProductVO;
 import cn.nju.edu.service.IOrderService;
 import cn.nju.edu.service.rpc.ProductRPC;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.google.common.eventbus.EventBus;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +22,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 项目名称：s-pay-mall-mvc
@@ -39,6 +42,9 @@ public class OrderServiceImpl implements IOrderService {
 
     @Resource
     private AlipayClient alipayClient;
+
+    @Resource
+    private EventBus eventBus;
 
     @Value("${alipay.notify_url}")
     private String notifyUrl;
@@ -123,6 +129,31 @@ public class OrderServiceImpl implements IOrderService {
 
         return payOrder;
 
+    }
+
+    @Override
+    public void changeOrderPaySuccess(String orderId) {
+        PayOrder payOrder = PayOrder.builder()
+                .orderId(orderId)
+                .status(Constants.OrderStatusEnum.PAY_SUCCESS.getCode())
+                .build();
+        orderDao.changeOrderPaySuccess(payOrder);
+        eventBus.post(JSON.toJSONString(payOrder));
+    }
+
+    @Override
+    public List<String> queryTimeOutCloseOrderList() {
+        return orderDao.queryTimeOutCloseOrderList();
+    }
+
+    @Override
+    public List<String> queryNoPayNotifyOrderList() {
+        return orderDao.queryNoPayNotifyOrderList();
+    }
+
+    @Override
+    public boolean changeOrderClose(String orderId) {
+        return orderDao.changeOrderClose(orderId);
     }
 
 
