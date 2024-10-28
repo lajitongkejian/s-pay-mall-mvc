@@ -3,6 +3,8 @@ package cn.nju.edu.dao;
 import cn.nju.edu.domain.po.PayOrder;
 import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
 /**
  * 项目名称：s-pay-mall-mvc
  * 类名称：IOrderDao
@@ -16,4 +18,12 @@ public interface IOrderDao {
     PayOrder queryUnPayOrder(PayOrder payOrder);
 
     void updateOrderPayInfo(PayOrder payOrder);
+
+    void changeOrderPaySuccess(PayOrder payOrder);
+
+    List<String> queryTimeOutCloseOrderList();
+
+    List<String> queryNoPayNotifyOrderList();
+
+    boolean changeOrderClose(String orderId);
 }
